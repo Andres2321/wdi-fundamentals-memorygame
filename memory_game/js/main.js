@@ -23,21 +23,20 @@ const cards = [
 
 // This variable will collect all cards clicked by the user 
 let cardsInPlay = [];
-
  
-var checkForMatch = function(){
+var checkForMatch = function() {
 	// Logic: If the rank of the first and second index in cardsInPlay equal
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		// If true display this alert
 		alert("You found a match!");
 	} else {
 		// If false display this alert
-		alert("Sorry, try again");
+		alert("Sorry, hit the reset button to try again.");
 	};
 };
 
 
-var flipCard = function(){
+var flipCard = function() {
 	// Attaches the data attribute to a variable called cardId
 	var cardId = event.target.getAttribute('data-id');
 	// Adds the rank contained in the cards array when it is "clicked" by the user
@@ -51,9 +50,9 @@ var flipCard = function(){
 };
 
 
-var createBoard = function (){
+var createBoard = function() {
 	// Iterates through the cards array
-	for (let i = 0; i <cards.length; i++){
+	for (let i = 0; i <cards.length; i++) {
 		// Creates an img element saved to a variable called cardElement
 		var cardElement = document.createElement('img');
 		// Attaches the source of an image to cardElement (back of a playing card)
@@ -67,8 +66,18 @@ var createBoard = function (){
 	};
 };
 
+function resetButton() {
+	// function will reload web page
+	document.location.reload(true);
+};
 
-/* */
+/*
+Retrieves the appropriate id and sets it to a variable 
+Use the variable to set text inside button
+Add a click event handler to call the resetButton function
+*/
+var btn = document.getElementById("reset-button");
+btn.textContent = "Reset";
+btn.addEventListener('click', resetButton);
+
 createBoard();
-
-
